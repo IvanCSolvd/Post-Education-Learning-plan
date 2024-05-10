@@ -1,4 +1,4 @@
-package Solvd.amazonPages;
+package Solvd.automationPages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;

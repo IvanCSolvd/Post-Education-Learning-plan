@@ -1,6 +1,6 @@
 package Solvd;
 
-import Solvd.amazonPages.HomePage;
+import Solvd.automationPages.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
