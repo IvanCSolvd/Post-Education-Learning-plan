@@ -1,35 +1,33 @@
 package Solvd;
 
-import Solvd.automationPages.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 public class BaseTest {
-    private WebDriver driver;
-    private HomePage homePage;
+    private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    protected WebDriver driver;
+
+    protected WebDriver getDriver() {
+        return driverThreadLocal.get();
+    }
 
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        homePage = new HomePage(driver);
-    }
-
-    @Test
-    public void searchProductTest() {
-        homePage.open();
-        homePage.searchForProduct("shirt");
-        homePage.clickSearchButton();
-        homePage.printTitles();
+        driverThreadLocal.set(driver);
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        WebDriver driver = getDriver();
+        if (driver != null) {
+            driver.quit();
+            driverThreadLocal.remove();
+        }
     }
 }
