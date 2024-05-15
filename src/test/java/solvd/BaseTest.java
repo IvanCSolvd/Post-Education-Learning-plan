@@ -1,4 +1,4 @@
-package Solvd;
+package solvd;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

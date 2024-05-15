@@ -1,4 +1,4 @@
-package Solvd.automationteststore;
+package solvd.automationteststore;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

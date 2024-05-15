@@ -2,12 +2,12 @@
 <suite name="TestSuite" parallel="tests">
     <test name="Test1">
         <classes>
-            <class name="Solvd.SearchTest"></class>
+            <class name="solvd.SearchTest"></class>
         </classes>
     </test>
     <test name="Test2">
         <classes>
-            <class name="Solvd.SearchTestThread2"></class>
+            <class name="solvd.SearchTestThread2"></class>
         </classes>
     </test>
 </suite>
