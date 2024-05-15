@@ -16,6 +16,7 @@ public class SearchTest extends BaseTest {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
+        logger.info(" automation exercise page is opened");
         Assert.assertTrue(homePage.isPageOpen(), "Page is not opened correctly in the HomePage.");
         String logoText = homePage.getLogoText();
         Assert.assertEquals(logoText, "Automation Test Store", "Logo text is not the same");
