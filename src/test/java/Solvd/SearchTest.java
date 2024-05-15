@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SearchTest extends BaseTest {
-    protected static Logger logger = LogManager.getLogger(BasePage.class);
+    protected static Logger logger = LogManager.getLogger(SearchTest.class);
 
     @Test
     public void searchProductTest() {
