@@ -1,6 +1,6 @@
 package Solvd;
 
-import Solvd.automationPages.HomePage;
+import Solvd.automationteststore.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 

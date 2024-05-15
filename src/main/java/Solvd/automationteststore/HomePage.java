@@ -1,14 +1,16 @@
-package Solvd.automationPages;
+package Solvd.automationteststore;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
 public class HomePage extends BasePage {
     private WebDriver driver;
+    private final String URL = "https://automationteststore.com/";
 
     @FindBy(css = "#filter_keyword")
     private WebElement searchInput;
@@ -19,6 +21,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".prdocutname")
     private List<WebElement> searchResults;
 
+    @FindBy(css = ".header-logo img")
+    private WebElement logo;
+
     public HomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -26,7 +31,7 @@ public class HomePage extends BasePage {
     }
 
     public void open() {
-        driver.get("https://automationteststore.com/");
+        driver.get(URL);
     }
 
     public void searchForProduct(String productName) {
@@ -37,10 +42,18 @@ public class HomePage extends BasePage {
         click(searchButton, "Search Button");
     }
 
+    public boolean isPageOpen(){
+        return driver.getCurrentUrl().equals(URL);
+    }
+
     public void printTitles() {
         logger.info("The results of the search are:");
         for (WebElement result : searchResults) {
             System.out.println(result.getText());
         }
+    }
+
+    public String getLogoText(){
+        return logo.getAccessibleName();
     }
 }
