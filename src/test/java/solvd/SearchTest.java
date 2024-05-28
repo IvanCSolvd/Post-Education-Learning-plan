@@ -1,11 +1,11 @@
 package solvd;
 
-import solvd.automationteststore.HomePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import solvd.automationteststore.HomePage;
 
 public class SearchTest extends BaseTest {
     protected static Logger logger = LogManager.getLogger(SearchTest.class);

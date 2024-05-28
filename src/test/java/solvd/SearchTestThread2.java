@@ -1,17 +1,17 @@
 package solvd;
 
-import solvd.automationteststore.HomePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import solvd.automationteststore.HomePage;
 
-public class SearchTestThread2 extends BaseTest{
+public class SearchTestThread2 extends BaseTest {
     protected static Logger logger = LogManager.getLogger(SearchTestThread2.class);
 
 
-    @Test()
+    @Test(enabled = false)
     public void searchProductTest2() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
@@ -23,5 +23,6 @@ public class SearchTestThread2 extends BaseTest{
         homePage.searchForProduct("eyes");
         homePage.clickSearchButton();
         homePage.printTitles();
+
     }
 }

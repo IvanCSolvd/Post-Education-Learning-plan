@@ -8,9 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class HomePage extends BasePage {
-    private WebDriver driver;
     private final String URL = "https://automationteststore.com/";
-
+    private WebDriver driver;
     @FindBy(css = "#filter_keyword")
     private WebElement searchInput;
 
@@ -23,6 +22,12 @@ public class HomePage extends BasePage {
     @FindBy(css = ".header-logo img")
     private WebElement logo;
 
+    @FindBy(xpath = "/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a")
+    private WebElement loginAndRegistrationButton;
+
+    @FindBy(css = "li[data-id=menu_cart]")
+    private WebElement cartButton;
+
     public HomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -34,15 +39,21 @@ public class HomePage extends BasePage {
     }
 
     public void searchForProduct(String productName) {
-        sendKeys(searchInput, productName, "Search Bar");
+        sendKeys(searchInput, productName);
     }
 
     public void clickSearchButton() {
-        click(searchButton, "Search Button");
+        click(searchButton);
     }
 
-    public boolean isPageOpen(){
-        return driver.getCurrentUrl().equals(URL);
+    public CartPage clickCartButton() {
+        click(cartButton);
+        return new CartPage(driver);
+    }
+
+    public LoginPage clickRegisterButton() {
+        click(loginAndRegistrationButton);
+        return new LoginPage(driver);
     }
 
     public void printTitles() {
@@ -52,7 +63,11 @@ public class HomePage extends BasePage {
         }
     }
 
-    public String getLogoText(){
+    public String getLogoText() {
         return logo.getAccessibleName();
+    }
+
+    public boolean isPageOpen() {
+        return driver.getCurrentUrl().equals(URL);
     }
 }

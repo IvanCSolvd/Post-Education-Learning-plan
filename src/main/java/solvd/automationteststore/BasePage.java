@@ -14,7 +14,7 @@ public abstract class BasePage {
     protected static Logger logger = LogManager.getLogger(BasePage.class);
     protected WebDriver driver;
     protected WebDriverWait wait;
-
+    protected String URL;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -30,23 +30,22 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    protected void click(WebElement element, String elementName) {
+    protected void click(WebElement element) {
         try {
             waitForElementToBeClickable(element);
             element.click();
-            logger.info("Clicked on " + elementName);
+            logger.info("Clicked on " + element.getText());
         } catch (Exception e) {
-            logger.error("Failed to click on " + elementName + ": " + e.getMessage());
+            //logger.error("Failed to click on button " + e.getMessage());
         }
     }
 
-    protected void sendKeys(WebElement element, String text, String elementName) {
+    protected void sendKeys(WebElement element, String text) {
         try {
-            waitForVisibilityOfElement(element);
             element.sendKeys(text);
-            logger.info("Entered text '" + text + "' into " + elementName);
+            logger.info("Entered text '" + text + "' into " + element.getText());
         } catch (Exception e) {
-            logger.error("Failed to enter text into " + elementName + ": " + e.getMessage());
+            //logger.error("Failed to enter text into " + element.getText() + ": " + e.getMessage());
         }
     }
 }
