@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
     private final String URL = "https://automationteststore.com/index.php?rt=account/login";
-    @FindBy(xpath = "//*[@id='loginFrm_loginname']")
+    @FindBy(xpath = "/input[@id='loginFrm_loginname']")
     public WebElement loginNameInput;
     @FindBy(css = "[title='Continue']")
     private WebElement registrationContinueButton;

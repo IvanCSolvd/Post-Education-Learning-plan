@@ -12,7 +12,7 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    public boolean isCartIsEmpty() {
+    public boolean isCartEmpty() {
         return cartIsEmptyText.getText().equals("Your shopping cart is empty!");
     }
 }

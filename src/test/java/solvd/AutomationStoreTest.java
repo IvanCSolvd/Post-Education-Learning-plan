@@ -14,7 +14,7 @@ public class AutomationStoreTest extends BaseTest {
     protected static Logger logger = LogManager.getLogger(AutomationStoreTest.class);
 
     @Test(enabled = false)
-    public void failedRegistration() throws InterruptedException {
+    public void testFailedRegistration() throws InterruptedException {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
@@ -27,7 +27,7 @@ public class AutomationStoreTest extends BaseTest {
     }
 
     @Test
-    public void login() {
+    public void testLogin() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
@@ -38,7 +38,7 @@ public class AutomationStoreTest extends BaseTest {
     }
 
     @Test
-    public void searchProductTest() {
+    public void testSearchProduct() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
@@ -48,15 +48,15 @@ public class AutomationStoreTest extends BaseTest {
         Assert.assertEquals(logoText, "Automation Test Store", "Logo text is not the same");
         homePage.searchForProduct("shirt");
         homePage.clickSearchButton();
-        homePage.printTitles();
+        Assert.assertTrue(homePage.includeSearch("shirt"));
     }
 
     @Test
-    public void checkEmptyCart() {
+    public void testEmptyCart() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
         CartPage cartPage = homePage.clickCartButton();
-        Assert.assertTrue(cartPage.isCartIsEmpty());
+        Assert.assertTrue(cartPage.isCartEmpty());
     }
 }

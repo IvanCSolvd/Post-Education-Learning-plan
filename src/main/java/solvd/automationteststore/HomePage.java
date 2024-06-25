@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
     @FindBy(css = ".header-logo img")
     private WebElement logo;
 
-    @FindBy(xpath = "/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a")
+    @FindBy(css = "#customer_menu_top")
     private WebElement loginAndRegistrationButton;
 
     @FindBy(css = "li[data-id=menu_cart]")
@@ -62,6 +62,22 @@ public class HomePage extends BasePage {
             System.out.println(result.getText());
         }
     }
+
+    public boolean includeSearch(String search) {
+        boolean contains = false;
+        search.toUpperCase();
+        for (WebElement result : searchResults) {
+            System.out.println(result.getText());
+            boolean textContains = result.getText().toLowerCase().contains(search);
+            if (textContains  == false) {
+                return false;
+            } else {
+                contains = true;
+            }
+        }
+        return contains;
+    }
+
 
     public String getLogoText() {
         return logo.getAccessibleName();
