@@ -1,18 +1,25 @@
 package solvd;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class BaseTest {
+import java.io.File;
+
+public class BaseTest implements ITestListener {
     private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-    protected WebDriver driver;
 
     protected WebDriver getDriver() {
         return driverThreadLocal.get();
     }
+
 
     @BeforeMethod
     public void setUp() {
@@ -23,11 +30,18 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
         WebDriver driver = getDriver();
-        if (driver != null) {
-            driver.quit();
-            driverThreadLocal.remove();
+        if (ITestResult.FAILURE == result.getStatus()) {
+            try {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                File source = ts.getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(source, new File("./resources/screenshots/" + result.getName() + ".png"));
+                System.out.println("Screenshot taken: " + result.getName());
+            } catch (Exception e) {
+                System.out.println("Exception while taking screenshot " + e.getMessage());
+            }
         }
+        driver.quit();
     }
 }

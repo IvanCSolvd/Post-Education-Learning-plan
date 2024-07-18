@@ -24,4 +24,12 @@ public class SearchTest extends BaseTest {
         homePage.printTitles();
     }
 
+    @Test
+    public void failedTest() {
+        WebDriver driver = getDriver();
+        HomePage homePage = new HomePage(driver);
+        homePage.open();
+        Assert.assertTrue(false, "This Test is expected to fail.");
+    }
+
 }

@@ -116,5 +116,8 @@ fabric.properties
 
 #logs
 /resources/logs
+/resources/screenshots
+
+/target
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij

@@ -5,9 +5,4 @@
             <class name="solvd.SearchTest"></class>
         </classes>
     </test>
-    <test name="Test2">
-        <classes>
-            <class name="solvd.SearchTestThread2"></class>
-        </classes>
-    </test>
 </suite>

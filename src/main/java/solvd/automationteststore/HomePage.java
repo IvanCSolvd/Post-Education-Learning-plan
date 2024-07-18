@@ -69,7 +69,7 @@ public class HomePage extends BasePage {
         for (WebElement result : searchResults) {
             System.out.println(result.getText());
             boolean textContains = result.getText().toLowerCase().contains(search);
-            if (textContains  == false) {
+            if (textContains == false) {
                 return false;
             } else {
                 contains = true;
